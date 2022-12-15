@@ -1,0 +1,21 @@
+<div style="margin-top: 10px;">
+    <div class="row">
+        <div class="col-md-4 col-sm-6">
+            <div class="card" style=" margin-top: 20px;">
+                <span style="padding: 8px; margin: 5px; background-color: cadetblue;">Membresía</span>
+                <div class="d-flex" style="padding: 10px;">
+                    <img [attr.src]="member?.team?.logo" alt="logo" width="100px">
+                    <div style="margin: 10px 0 0 10px;">
+                        <h6>Mis datos</h6>
+                        <span class="bold">Nombre completo: </span>{{member?.name + ' ' + member?.lastname + ' ' + member?.lastnameTwo}}<br>
+                        <span class="bold">Nacionalidad: </span>{{member?.nationality?.nombre}}<br>
+                        <span class="bold">Club: </span>{{member?.team?.nombre}}<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 10px;">
+        <button type="button" class="btn btn-success" (click)="saveForm()">Finalizar formulario</button>
+    </div>
+</div>

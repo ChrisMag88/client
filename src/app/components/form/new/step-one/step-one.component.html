@@ -1,0 +1,109 @@
+<div style="margin-top: 10px;">
+  <h5>Datos generales</h5>
+  <h6>Completa todos los campos</h6>
+  <form action="">
+    <div class="row">
+      <div class="col-md-3">
+        <label for="name">Nombre</label>
+        <div class="form-group">
+          <input 
+            type="text" class="form-control" name="name" (change)="flags.name = false" [(ngModel)]="member.name" placeholder="Ingresa tu(s) nombre(s)" required>
+        </div>
+        <div *ngIf="flags.name" class="error">
+          Debes completar este campo
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <label for="name">Apellido paterno</label>
+        <div class="form-group">
+          <input type="text" class="form-control" name="lastname" (change)="flags.lastname = false" [(ngModel)]="member.lastname" placeholder="Ingresa tu apellido paterno" required>
+        </div>
+        <div *ngIf="flags.lastname" class="error">
+          Debes completar este campo
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <label for="name">Apellido materno</label>
+        <div class="form-group">
+          <input type="text" class="form-control" name="lastnameTwo" (change)="flags.lastnameTwo = false" [(ngModel)]="member.lastnameTwo" placeholder="Ingresa tu apellido materno" required>
+        </div>
+        <div *ngIf="flags.lastnameTwo" class="error">
+          Debes completar este campo
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <label for="name">Fecha de nacimiento</label>
+        <div class="form-group">
+          
+            <input
+              type="date"
+              class="form-control"
+              placeholder="dd-mm-aaaa"
+              name="birthdate"
+              [(ngModel)]="member.birthdate"
+              (change)="flags.birthdate = false"
+              required
+            />
+            
+        </div>
+        <div *ngIf="flags.birthdate" class="error">
+          Debes completar este campo
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 5px;">
+      <div class="col-md-3">
+        <label for="gender">Gènero</label>
+        <div class="form-group">
+          <select name="gender" (change)="flags.gender = false" [(ngModel)]="member.gender" class="form-select" required>
+            <option [ngValue]="item" *ngFor="let item of GENDERS">{{item.nombre}}</option>
+          </select>
+        </div>
+        <div *ngIf="flags.gender" class="error">
+          Debes completar este campo
+        </div>
+      </div>
+
+
+      <div class="col-md-3">
+        <label for="nationality">Nacionalidad</label>
+        <div class="form-group">
+          <select name="nationality" (change)="flags.nationality = false" [(ngModel)]="member.nationality" class="form-select" required>
+            <option [ngValue]="item" *ngFor="let item of NATIONALITIES">{{item.nombre}}</option>
+          </select>
+        </div>
+        <div *ngIf="flags.nationality" class="error">
+          Debes completar este campo
+        </div>
+      </div>
+
+
+      <div class="col-md-3">
+        <label for="gender">Club de fùtbol</label>
+        <div class="form-group">
+          <select name="team" (change)="flags.team = false" [(ngModel)]="member.team" class="form-select" required>
+            <option [ngValue]="item" *ngFor="let item of TEAMS">{{item.nombre}}</option>
+          </select>
+        </div>
+        <div *ngIf="flags.team" class="error">
+          Debes completar este campo
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <label for="gender">Ocupaciòn</label>
+        <div class="form-group">
+          <input type="text" class="form-control" name="ocupation" (change)="flags.ocupation = false" [(ngModel)]="member.ocupation" placeholder="Ingresa tu ocupación" required>
+        </div>
+        <div *ngIf="flags.ocupation" class="error">
+          Debes completar este campo
+        </div>
+      </div>
+
+    </div>
+  </form>
+</div>

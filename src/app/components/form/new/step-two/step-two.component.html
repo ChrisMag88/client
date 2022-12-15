@@ -1,0 +1,64 @@
+<div style="margin-top: 10px;">
+    <h5>Datos financieros</h5>
+    <h6>Completa todos los campos</h6>
+    <form action="">
+      <div class="row">
+
+        <div class="col-md-3">
+          <label for="name">Calle</label>
+          <div class="form-group">
+            <input type="text" class="form-control" name="street" (change)="flags.street = false" [(ngModel)]="member.street" placeholder="Ingresa tu calle">
+          </div>
+          <div *ngIf="flags.street" class="error">
+            Debes completar este campo
+          </div>
+        </div>
+
+        <div class="col-md-3">
+            <label for="name">Nùmero</label>
+            <div class="form-group">
+              <input type="text" class="form-control"  name="adressNumber" (change)="flags.addressNumber = false" [(ngModel)]="member.addressNumber" placeholder="Ingresa tu número de calle">
+            </div>
+            <div *ngIf="flags.addressNumber" class="error">
+              Debes completar este campo
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <label for="name">Colonia</label>
+            <div class="form-group">
+              <input type="text" class="form-control"  name="settlement" (change)="flags.settlement = false" [(ngModel)]="member.settlement" placeholder="Ingresa tu colonia">
+            </div>
+            <div *ngIf="flags.settlement" class="error">
+              Debes completar este campo
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <label for="name">Código postal</label>
+            <div class="form-group">
+              <input type="text" (keypress)="onlyNumbers($event)" maxlength="6" class="form-control"  name="zipCode" (change)="flags.zipCode = false" [(ngModel)]="member.zipCode" placeholder="Ingresa tu código postal">
+            </div>
+            <div *ngIf="flags.zipCode" class="error">
+              Debes completar este campo
+            </div>
+          </div>
+
+      </div>
+
+      <div class="row" style="margin-top: 5px;" *ngIf="member.age >= 18">
+        <div class="col-md-3">
+            <label for="">RFC</label>
+            <div class="form-group">
+                <input type="text" class="form-control" (change)="validateRFC()" maxlength="13" name="rfc" (change)="flags.rfc = false" [(ngModel)]="member.rfc" placeholder="Ingresa tu RFC">
+            </div>
+            <div *ngIf="flags.rfc" class="error">
+              Debes completar este campo
+            </div>
+            <div *ngIf="flags.errorRfc" class="error">
+              Ingresa un RFC valido
+            </div>
+        </div>
+      </div>
+    </form>
+  </div>

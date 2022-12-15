@@ -1,0 +1,67 @@
+<div class="card">
+    <div class="card-body">
+        <h5>Filtros</h5>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="">ID</label>
+                <input type="text" class="form-control" name="id" [(ngModel)]="filter.id">
+            </div>
+
+            <div class="col-md-3">
+                <label for="">Nombre</label>
+                <input type="text" class="form-control"  name="name" [(ngModel)]="filter.name">
+            </div>
+
+            <div class="col-md-6">
+                <label for=""></label>
+                <input type="button" class="btn btn-info" style="margin-top: 20px;" value="Buscar" (click)="getMembers(); search = true">
+            </div>
+        </div>
+    </div>
+
+</div>
+<div style="margin-top: 10px; padding: 5px;" *ngIf="members.length">
+    <h5>Miembros registrados ()</h5>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre completo</th>
+                <th>Fecha de nacimiento</th>
+                <th>Género</th>
+                <th>Nacionalidad</th>
+                <th>Club de fútbol</th>
+                <th>RFC</th>
+                <th>Impresión</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of members">
+                <td>{{item?.id}}</td>
+                <td>{{item?.fullname}}</td>
+                <td>{{item?.birthdate | date: 'dd-MM-yyyy'}}</td>
+                <td>{{item?.gender?.nombre}}</td>
+                <td>{{item?.nationality?.nombre}}</td>
+                <td>{{item?.team.nombre}}</td>
+                <td>{{item?.rfc || 'S/D'}}</td>
+                <th><button class="btn btn-sm btn-success" (click)="printPDF(item)">Imprimir PDF</button></th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="row" style="margin-top: 10px; padding: 5px;" *ngIf="!members.length && !search">
+    <div class="text-center">
+        <h6>
+            Al parecer no hay ningún miembro registrado. Puedes registrar un miembro desde el botón "Formulario"
+        </h6>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 10px; padding: 5px;" *ngIf="!members.length && search">
+    <div class="text-center">
+        <h6>
+            Tu búsqueda no obtuvo ningún resultado. Por favor intenta con otros criterios.
+        </h6>
+    </div>
+</div>

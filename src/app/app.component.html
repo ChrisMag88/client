@@ -1,0 +1,29 @@
+<div>
+  <header style="border: 1px solid #bbbbbb; border-radius: 10px; padding: 10px; margin: 10px;">
+    <button class="btn btn-secondary" style="margin: 0 3px;" (click)="changeView('instructions')">
+      Instrucciones
+    </button>
+  
+    <button class="btn btn-success" style="margin: 0 3px;" (click)="changeView('new')">
+      Formulario
+    </button>
+  
+    <button class="btn btn-primary" style="margin: 0 3px;" (click)="changeView('list')">
+      Listado
+    </button>
+  </header>
+  
+  <div style="padding: 10px;">
+    <div *ngIf="views.instructions">
+      <app-list></app-list>
+    </div>
+  
+    <div *ngIf="views.new">
+      <app-form (finishForm)="getEvent($event)"></app-form>
+    </div>
+  
+    <div *ngIf="views.list">
+      <app-members></app-members>
+    </div>
+  </div>
+</div>

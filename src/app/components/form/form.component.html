@@ -1,0 +1,21 @@
+<ng-wizard [config]="config" (stepChanged)="stepChanged($event)">
+
+  <ng-wizard-step [title]="'Paso 1'" [description]="'Datos generales'"
+    [canExit]="isValidFunctionReturnsObservable.bind(this)"
+    [canEnter]="isValidFunctionReturnsBoolean.bind(this)">
+    <app-step-one [member]="member" [flags]="flags"></app-step-one>
+  </ng-wizard-step>
+
+  <ng-wizard-step [title]="'Paso 2'" [description]="'Datos financieros'"
+    [canExit]="isValidFunctionReturnsObservable.bind(this)"
+    [canEnter]="isValidFunctionReturnsBoolean.bind(this)">
+    <app-step-two [member]="member" [flags]="flags" *ngIf="member.age"></app-step-two>
+  </ng-wizard-step>
+
+  <ng-wizard-step [title]="'Paso 3'" [description]="'Credencial'"
+    [canExit]="isValidFunctionReturnsObservable.bind(this)"
+    [canEnter]="isValidFunctionReturnsBoolean.bind(this)">
+    <app-step-three (finishForm)="getEvent($event)" [member]="member" [flags]="flags"></app-step-three>
+  </ng-wizard-step>
+</ng-wizard>
+
